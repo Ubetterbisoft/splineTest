@@ -14,17 +14,17 @@ html, body, #root {
   overflow-x: hidden;
 }
 
-/* Erste Sektion */
+/* Erste Sektion (full-screen spline) */
 .spline-section {
   position: relative;
-  height: 100vh; /* füllt den Viewport */
+  height: 100vh;
   width: 100%;
   overflow: hidden;
 }
 
-/* Spline Canvas */
+/* Fullscreen Spline */
 .spline-bg {
-  position: absolute; /* NICHT fixed */
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -39,13 +39,12 @@ html, body, #root {
   left: 0;
   width: 100%;
   height: 100%;
-  padding: 5rem;
+  padding: 4rem;
   z-index: 1;
   color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
 
 .overlay h1 {
@@ -57,4 +56,115 @@ html, body, #root {
   font-size: 1.25rem;
   margin-top: 1rem;
   color: rgba(255, 255, 255, 0.8);
+}
+
+/* Zweite Section */
+.heroSection {
+  background-color: whitesmoke;
+  color: black;
+  position: relative;
+  min-height: 100vh;   /* desktop */
+  width: 100%;
+  padding: 4rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  gap: 2rem;
+  flex-wrap: wrap; /* ✅ ensures no overflow */
+}
+
+/* Text inside hero */
+.heroSection h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+.heroSection p {
+  font-size: 1.2rem;
+}
+
+/* Chatty spline window */
+.chatty {
+  flex-shrink: 0;
+  width: 80%;       /* ✅ start flexible */
+  max-width: 750px; /* ✅ cap size on big screens */
+  aspect-ratio: 4 / 3; /* ✅ keeps proportions */
+  border-radius: 33px;
+  overflow: hidden;
+  box-shadow: 0 4px 40px rgba(0,0,0,0.5);
+  margin: 0 auto;
+}
+
+/* ---------------------- */
+/* Responsive Rules       */
+/* ---------------------- */
+
+/* Large laptops / smaller desktops */
+@media (max-width: 1200px) {
+  .overlay {
+    padding: 3rem;
+  }
+  .overlay h1 { font-size: 3rem; }
+  .chatty { max-width: 700px; }
+}
+
+/* Tablets landscape */
+@media (max-width: 1024px) {
+  .heroSection {
+    flex-direction: row;
+    padding: 2.5rem;
+    min-height: auto;
+    gap: 2rem;
+  }
+  .chatty { max-width: 600px; }
+  .heroSection h1 { font-size: 2.2rem; }
+}
+
+/* Tablets portrait */
+@media (max-width: 768px) {
+  .overlay { padding: 2rem; }
+  .overlay h1 { font-size: 2.5rem; }
+  .overlay p { font-size: 1rem; }
+
+  .heroSection {
+    flex-direction: column;
+    padding: 2rem;
+    text-align: center;
+    min-height: auto;
+    gap: 1.5rem;
+  }
+  .chatty {
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 16 / 9;
+  }
+  .heroSection h1 { font-size: 2rem; }
+  .heroSection p { font-size: 1rem; }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+  .overlay h1 { font-size: 2rem; }
+  .overlay p { font-size: 0.9rem; }
+
+  .heroSection {
+    padding: 1rem;
+    gap: 1rem;
+  }
+  .chatty {
+    width: 100%;
+    max-width: 350px;
+    aspect-ratio: 16 / 10;
+  }
+  .heroSection h1 { font-size: 1.5rem; }
+  .heroSection p { font-size: 0.9rem; }
+}
+
+/* Very small phones */
+@media (max-width: 360px) {
+  .chatty {
+    max-width: 280px;
+    aspect-ratio: 1 / 1; /* square-ish so it doesn't clip */
+  }
 }

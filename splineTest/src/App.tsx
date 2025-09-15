@@ -1,21 +1,32 @@
 import './App.css'
 import Spline from '@splinetool/react-spline'
-import Hero from './Hero'
 
 function App() {
   return (
     <div className="app">
-      {/* Erster Abschnitt mit Spline */}
+      {/* Fullscreen Section with spline */}
       <section className="spline-section">
         <Spline className="spline-bg" scene="/scene.splinecode" />
         <div className="overlay">
-          <h1>Hello World</h1>
-          <p>Welcome to my modern 3D site!</p>
+          <h1>This is part of <br />
+          Dejans Portfolio</h1>
+          
+          <p>3D-Models provided by Spline and <br></br>various other creators</p>
         </div>
       </section>
 
-      {/* Zweiter Abschnitt */}
-      <Hero />
+      {/* Hero Section with smaller spline window */}
+      <div className="heroSection">
+        <div>
+          <h1>Welcome to My 3D Site</h1> 
+          <p>Experience the future of web design with stunning 3D graphics.</p>
+        </div>
+        
+        {/* Small spline window */}
+        <div className="chatty">
+          <Spline scene="/chattyWhite.splinecode" />
+        </div>
+      </div>
     </div>
   )
 }
